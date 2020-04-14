@@ -1,0 +1,23 @@
+{
+    "include": ["src/**/*.ts"],
+    "compilerOptions": {
+        "module": "commonjs",
+        "rootDir": "./src",
+        "outDir": "./dist",
+        "declarationDir": "./dist",
+        "target": "esnext",
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "sourceMap": true,
+        "declaration": true,
+        "declarationMap": true,
+        "incremental": true,
+        "preserveConstEnums": false,
+        "strict": true,
+        "noImplicitAny": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
+        "noUnusedLocals": true
+    }
+}
