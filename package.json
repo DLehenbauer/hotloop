@@ -1,12 +1,12 @@
 {
   "name": "hotloop",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Improves the accuracy/stability of Benchmark.js suites by executing each test in a separate Node.js process.",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
     "clean": "rimraf dist *.tsbuildinfo",
-    "test": "cd example && ts-node ./index.ts"
+    "test": "cd examples/simple && ts-node ./index.ts && ts-node ./index.ts --runInBand && cd ../with-args && ts-node ./index.ts && ts-node ./index.ts --runInBand"
   },
   "repository": {
     "type": "git",
@@ -20,7 +20,9 @@
   "homepage": "https://github.com/DLehenbauer/hotloop#readme",
   "dependencies": {
     "@types/benchmark": "^1.0.31",
-    "benchmark": "^2.1.4"
+    "@types/minimist": "^1.2.0",
+    "benchmark": "^2.1.4",
+    "minimist": "^1.2.5"
   },
   "devDependencies": {
     "@types/node": "^12.12.35",
