@@ -36,13 +36,30 @@ export function getTestArgs() {
         : JSON.parse(json);
 }
 
-export function benchmark(name: string, fn: () => void) {
+function runBenchmark(name: string, options: Benchmark.Options) {
     const { send } = getEnvironment();
 
-    new Benchmark(name, fn)
+    new Benchmark(name, options)
         .on('complete', send)
         .on('error', send)
         .run();
+}
+
+export function benchmark(name: string, fn: () => void) {
+    runBenchmark(name, { fn });
+}
+
+export function benchmarkAsync(name: string, fn: (deferred: { resolve: () => void }) => void) {
+    runBenchmark(name, { defer: true, fn });
+}
+
+export function benchmarkPromise(name: string, fn: () => Promise<void>) {
+    benchmarkAsync(
+        name,
+        async (deferred) => {
+            await fn();
+            deferred.resolve();
+        });
 }
 
 type ForkFn = (path: string, args: any, callback: BenchmarkCallback) => void;

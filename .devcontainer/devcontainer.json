@@ -1,11 +1,11 @@
 // For format details, see https://aka.ms/vscode-remote/devcontainer.json or this file's README at:
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.134.1/containers/javascript-node
 {
-	"name": "Node.js",
+	"name": "Hotloop",
 	"build": {
 		"dockerfile": "Dockerfile",
 		// Update 'VARIANT' to pick a Node version: 10, 12, 14
-		"args": { "VARIANT": "12" }
+		"args": { "VARIANT": "14" }
 	},
 
 	// Set *default* container specific settings.json values on container create.
@@ -27,4 +27,3 @@
 	// Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
 	// "remoteUser": "node"
 }
-

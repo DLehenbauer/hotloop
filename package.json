@@ -7,7 +7,8 @@
     "build": "tsc",
     "clean": "rimraf dist *.tsbuildinfo",
     "prepublishOnly": "git reset --hard head && git clean -xfd && npm i && npm run build && npm t",
-    "test": "npm run test:simple && npm run test:with-args",
+    "test": "npm run test:simple && npm run test:with-args && npm run test:async",
+    "test:async": "cd examples/async && ts-node ./index.ts && ts-node ./index.ts --runInBand",
     "test:simple": "cd examples/simple && ts-node ./index.ts && ts-node ./index.ts --runInBand",
     "test:with-args": "cd examples/with-args && ts-node ./index.ts && ts-node ./index.ts --runInBand"
   },
