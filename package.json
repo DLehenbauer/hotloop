@@ -1,6 +1,6 @@
 {
   "name": "hotloop",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Improves the accuracy/stability of Benchmark.js suites by executing each test in a separate Node.js process.",
   "main": "dist/index.js",
   "scripts": {
@@ -8,30 +8,30 @@
     "clean": "rimraf dist *.tsbuildinfo",
     "prepublishOnly": "git reset --hard head && git clean -xfd && npm i && npm run build && npm t",
     "test": "npm run test:simple && npm run test:with-args && npm run test:async",
-    "test:async": "cd examples/async && ts-node ./index.ts && ts-node ./index.ts --runInBand",
-    "test:simple": "cd examples/simple && ts-node ./index.ts && ts-node ./index.ts --runInBand",
-    "test:with-args": "cd examples/with-args && ts-node ./index.ts && ts-node ./index.ts --runInBand"
+    "test:async": "cd examples/async && node -r ts-node/register --trace-warnings --unhandled-rejections=strict ./index.ts --runInBand && node -r ts-node/register --trace-warnings --unhandled-rejections=strict ./index.ts",
+    "test:simple": "npm run build && cd examples/simple && node --trace-warnings --unhandled-rejections=strict ./index.js --runInBand && node --trace-warnings --unhandled-rejections=strict ./index.js",
+    "test:with-args": "cd examples/with-args && node -r ts-node/register --trace-warnings --unhandled-rejections=strict ./index.ts --runInBand && node -r ts-node/register --trace-warnings --unhandled-rejections=strict ./index.ts"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DLehenbauer/hotloop.git"
   },
-  "author": "",
+  "author": "Daniel Lehenbauer",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/DLehenbauer/hotloop/issues"
   },
   "homepage": "https://github.com/DLehenbauer/hotloop#readme",
   "dependencies": {
-    "@types/benchmark": "^1.0.31",
-    "@types/minimist": "^1.2.0",
     "benchmark": "^2.1.4",
     "minimist": "^1.2.5"
   },
   "devDependencies": {
-    "@types/node": "^12.12.35",
+    "@types/benchmark": "^1.0.33",
+    "@types/minimist": "^1.2.0",
+    "@types/node": "^12.12.62",
     "rimraf": "^3.0.2",
-    "ts-node": "^8.8.2",
-    "typescript": "^3.8.3"
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.3"
   }
 }

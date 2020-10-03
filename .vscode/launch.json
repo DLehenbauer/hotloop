@@ -7,10 +7,30 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Bench",
-            "program": "${workspaceFolder}/node_modules/ts-node/dist/bin.js",
+            "preLaunchTask": "npm: build",
+            "name": "Test (Simple JavaScript)",
             "cwd": "${workspaceFolder}/examples/simple",
-            "args": [ "index.ts" ],
+            "args": [
+                "index.js",
+                "--runInBand"
+            ],
+            "runtimeArgs": [
+                "--trace-warnings",
+                "--unhandled-rejections=strict"
+            ],
+            "console": "integratedTerminal"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Test (With Args)",
+            "cwd": "${workspaceFolder}/examples/with-args",
+            "args": [ "index.ts", "--runInBand" ],
+            "runtimeArgs": [
+                "-r", "ts-node/register",
+                "--trace-warnings",
+                "--unhandled-rejections=strict"
+            ],
             "env": { "TS_NODE_PROJECT": "${workspaceFolder}/tsconfig.json" },
             "console": "integratedTerminal"
         }
